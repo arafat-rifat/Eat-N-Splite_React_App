@@ -2,6 +2,7 @@ import Button from "./Components/Button";
 import FormAddFriend from "./Components/FormAddFriend";
 import FormSplitBill from "./Components/FormSplitBill";
 import FriendsList from "./Components/FriendsList";
+import { useState } from "react";
 
 const initialFriends = [
   {
@@ -26,14 +27,25 @@ const initialFriends = [
 
 
 export default function App() {
+
+  const [isOpen,setIsOpen] = useState(false);
+
+ function handleAddForm () {
+   
+  setIsOpen((isOpen)=> !isOpen)
+
+ }
+
   return(
      
     <div className="app"> 
     <div className="sidebar">
     <FriendsList initialFriends={initialFriends}/>
-    <FormAddFriend/>
-    <Button>
-      Add Friend
+    {
+      isOpen && <FormAddFriend/>
+    }
+    <Button onHandleAddFrom={handleAddForm}>
+     {isOpen ? "Close" :  "Add Friend"}
     </Button>
     </div>
 
