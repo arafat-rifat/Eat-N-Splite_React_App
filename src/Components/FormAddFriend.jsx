@@ -1,10 +1,12 @@
 import React from 'react'
 import Button from './Button'
 
-const FormAddFriend = ({ name , setName , image , setImage}) => {
+const FormAddFriend = ({ name , setName , image , setImage , setFriends , friends,setIsOpen}) => {
 
   function handleSubmit(e){
      e.preventDefault();
+
+     if (!name || !image) return;
     
      const id = crypto.randomUUID();
 
@@ -16,6 +18,15 @@ const FormAddFriend = ({ name , setName , image , setImage}) => {
     }
    
     console.log(newFriend);
+
+    setFriends([...friends,newFriend]);
+
+    // After Submitting Form
+
+    setName('');
+    setImage("https://i.pravatar.cc/48?u=933372");
+
+    setIsOpen(false);
 
   }
 

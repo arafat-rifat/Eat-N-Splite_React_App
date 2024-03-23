@@ -28,6 +28,9 @@ const initialFriends = [
 
 export default function App() {
 
+  
+  const [friends,setFriends] = useState(initialFriends);
+
   const [isOpen,setIsOpen] = useState(false);
 
   const [name , setName] = useState('');
@@ -43,9 +46,9 @@ export default function App() {
      
     <div className="app"> 
     <div className="sidebar">
-    <FriendsList initialFriends={initialFriends}/>
+    <FriendsList friends={friends}/>
     {
-      isOpen && <FormAddFriend  name={name} setName={setName} image={image} setImage={setImage}/>
+      isOpen && <FormAddFriend  name={name} setName={setName} image={image} setImage={setImage} friends={friends} setFriends={setFriends} setIsOpen={setIsOpen}/>
     }
     <Button onHandleAddFrom={handleAddForm}>
      {isOpen ? "Close" :  "Add Friend"}
