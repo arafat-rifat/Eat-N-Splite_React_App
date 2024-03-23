@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './Button'
 
-const Friend = ({friend}) => {
+const Friend = ({friend , handleSelection}) => {
   return (
    <li>
     <img src={friend.image} alt={friend.name}/>

@@ -27,14 +27,22 @@ const initialFriends = [
 
 
 export default function App() {
-
+ 
   
   const [friends,setFriends] = useState(initialFriends);
+
+  const [selectedFriend , setSelectedFriend] = useState(null);
 
   const [isOpen,setIsOpen] = useState(false);
 
   const [name , setName] = useState('');
   const [image , setImage] = useState("https://i.pravatar.cc/48?u=933372");
+
+ 
+ function handleSelection () {
+  setSelectedFriend((selectedFriend) => !selectedFriend)
+ }
+
 
  function handleAddForm () {
    
@@ -46,7 +54,7 @@ export default function App() {
      
     <div className="app"> 
     <div className="sidebar">
-    <FriendsList friends={friends}/>
+    <FriendsList friends={friends} handleSelection={handleSelection} />
     {
       isOpen && <FormAddFriend  name={name} setName={setName} image={image} setImage={setImage} friends={friends} setFriends={setFriends} setIsOpen={setIsOpen}/>
     }
@@ -55,7 +63,9 @@ export default function App() {
     </Button>
     </div>
 
-    <FormSplitBill/>
+    {
+      selectedFriend && <FormSplitBill/>
+    }
     </div>
 
   )
