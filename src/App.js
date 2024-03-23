@@ -39,8 +39,8 @@ export default function App() {
   const [image , setImage] = useState("https://i.pravatar.cc/48?u=933372");
 
  
- function handleSelection () {
-  setSelectedFriend((selectedFriend) => !selectedFriend)
+ function handleSelection (friend) {
+  setSelectedFriend(friend);
  }
 
 
@@ -58,13 +58,13 @@ export default function App() {
     {
       isOpen && <FormAddFriend  name={name} setName={setName} image={image} setImage={setImage} friends={friends} setFriends={setFriends} setIsOpen={setIsOpen}/>
     }
-    <Button onHandleAddFrom={handleAddForm}>
+    <Button onClick={handleAddForm}>
      {isOpen ? "Close" :  "Add Friend"}
     </Button>
     </div>
 
     {
-      selectedFriend && <FormSplitBill/>
+      selectedFriend && <FormSplitBill selectedFriend={selectedFriend}/>
     }
     </div>
 

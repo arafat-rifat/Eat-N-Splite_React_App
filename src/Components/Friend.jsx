@@ -12,7 +12,7 @@ const Friend = ({friend , handleSelection}) => {
 
     {friend.balance === 0 && <p>You and {friend.name} are even</p>}
    
-    <Button>
+    <Button onClick={() => handleSelection(friend)}>
     Select
     </Button>
 
