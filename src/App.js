@@ -40,7 +40,11 @@ export default function App() {
 
  
  function handleSelection (friend) {
-  setSelectedFriend(friend);
+  // setSelectedFriend(friend);
+  setSelectedFriend((selectedFriend) => (selectedFriend?.id === friend.id ? null : friend));
+
+  setIsOpen(false);
+
  }
 
 
@@ -54,7 +58,7 @@ export default function App() {
      
     <div className="app"> 
     <div className="sidebar">
-    <FriendsList friends={friends} handleSelection={handleSelection} />
+    <FriendsList friends={friends} handleSelection={handleSelection} selectedFriend={selectedFriend} />
     {
       isOpen && <FormAddFriend  name={name} setName={setName} image={image} setImage={setImage} friends={friends} setFriends={setFriends} setIsOpen={setIsOpen}/>
     }
